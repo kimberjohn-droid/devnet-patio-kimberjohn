@@ -1,52 +1,62 @@
 """
-Module 2 — Lesson 3: Loops & Lists
+Module 2 — Activity: File Sorting with os and shutil
 Student: Kimber John F. Patio
 Date: September 25, 2026
 
 ============================================
-WHAT IS THIS TOPIC? (explain it like you're
-teaching a friend who's never coded before)
+WHAT DID YOU BUILD? (explain in your own words)
 ============================================
-A list is used to store multiple values in one variable.
-Loops are used to repeat code like a cycle. A for loop repeats code
-for each item in a list, while a while loop repeats code
-as long as a condition is true.
+I built a simple file sorting program using os and shutil.
+The program checks the files in a folder and moves them
+into folders based on their file type, such as Images,
+Documents, and Others.
 
 
 ============================================
 KEY VOCABULARY
 ============================================
-- list: a collection of values stored in one variable
-- for loop: repeats code for each item
-- while loop: repeats code while a condition is true
-- index: the position of an item in a list
-- iteration: one repetition of a loop
+- os module: used to work with files and folders
+- shutil module: used to move and manage files
+- file path: the location of a file
+- directory: a folder that contains files
 
 
 ============================================
-MY OWN EXAMPLE(S)
+YOUR SCRIPT
 ============================================
-Write at least one working example below that you
-came up with yourself — not copied from class.
 """
 
-names = ["Kim", "Laine", "Abby"]
+import os
+import shutil
 
-for name in names:
-    print(name)
+folder = "my_files"
+
+for file in os.listdir(folder):
+    file_path = os.path.join(folder, file)
+
+    if os.path.isfile(file_path):
+        extension = os.path.splitext(file)[1].lower()
+
+        if extension in [".jpg", ".png", ".gif"]:
+            destination = os.path.join(folder, "Images")
+        elif extension in [".txt", ".pdf", ".docx"]:
+            destination = os.path.join(folder, "Documents")
+        else:
+            destination = os.path.join(folder, "Others")
+
+        os.makedirs(destination, exist_ok=True)
+        shutil.move(file_path, os.path.join(destination, file))
 
 
 """
 ============================================
 A MISTAKE I MADE (or one I want to avoid)
 ============================================
-A mistake I want to avoid is forgetting that list
-indexes start at 0. For example, the first item is
-at index 0, not index 1.
+A mistake I want to avoid is using the wrong folder
+path. If the folder name or location is incorrect,
+the program may not find the files.
 
 
 ============================================
 HOW THIS CONNECTS TO SOMETHING ELSE
 ============================================
-
-"""
