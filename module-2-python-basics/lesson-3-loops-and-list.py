@@ -1,46 +1,64 @@
 """
-Module 2 — Lesson 3: Loops & Lists
-Student: [your name]
-Date: [date]
+Module 2 — Activity: File Sorting with os and shutil
+Student: Kimber John F. Patio
+Date: September 25, 2026
 
 ============================================
-WHAT IS THIS TOPIC? (explain it like you're
-teaching a friend who's never coded before)
+WHAT DID YOU BUILD? (explain in your own words)
 ============================================
-[write your own explanation here]
+I built a simple file sorting program using os and shutil.
+The program checks the files in a folder and moves them
+into folders based on their file type, such as Images,
+Documents, and Others.
 
 
 ============================================
 KEY VOCABULARY
 ============================================
-- list:
-- for loop:
-- while loop:
-- index:
-- iteration:
-(add more as needed)
+- os module: used to work with files and folders
+- shutil module: used to move and manage files
+- file path: the location of a file
+- directory: a folder that contains files
 
 
 ============================================
-MY OWN EXAMPLE(S)
+YOUR SCRIPT
 ============================================
-Write at least one working example below that you
-came up with yourself — not copied from class.
 """
 
-# --- your code example goes here ---
+import os
+import shutil
+
+folder = "my_files"
+
+for file in os.listdir(folder):
+    file_path = os.path.join(folder, file)
+
+    if os.path.isfile(file_path):
+        extension = os.path.splitext(file)[1].lower()
+
+        if extension in [".jpg", ".png", ".gif"]:
+            destination = os.path.join(folder, "Images")
+        elif extension in [".txt", ".pdf", ".docx"]:
+            destination = os.path.join(folder, "Documents")
+        else:
+            destination = os.path.join(folder, "Others")
+
+        os.makedirs(destination, exist_ok=True)
+        shutil.move(file_path, os.path.join(destination, file))
 
 
 """
 ============================================
 A MISTAKE I MADE (or one I want to avoid)
 ============================================
-[what's something confusing or easy to get wrong
-about this topic?]
+A mistake I want to avoid is using the wrong folder
+path. If the folder name or location is incorrect,
+the program may not find the files.
 
 
 ============================================
 HOW THIS CONNECTS TO SOMETHING ELSE
 ============================================
-[optional]
+
 """
