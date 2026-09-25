@@ -60,5 +60,3 @@ the program may not find the files.
 ============================================
 HOW THIS CONNECTS TO SOMETHING ELSE
 ============================================
-
-"""
