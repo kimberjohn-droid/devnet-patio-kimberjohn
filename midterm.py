@@ -18,20 +18,14 @@ def display_menu():
     return choice
 
 def add_device(device_list):
-    """Asks user for device details, formats the string, and appends it to the list."""
     name = input("Enter device name: ").strip()
     ip_address = input("Enter IP address: ").strip()
-    status = input("Enter status (Active/Inactive): ").strip().capitalize()
+    status = input("Enter status (Online, Offline): ").strip()
     
-    # Simple validation for status to ensure formatting consistency
-    if status not in ["Active", "Inactive"]:
-        print("Invalid status! Defaulting to 'Inactive'.")
-        status = "Inactive"
-        
-    # Build the string using the delimiter
-    device_string = f"{name} - {ip_address} - {status}"
+    device_string = f"Name: {name} | IPAddress: {ip_address} | Status: {status}"
+    
     device_list.append(device_string)
-    print(f"Device '{name}' successfully added!")
+    print(f"Successfully added: {device_string}")
 
 def view_devices(device_list):
     # loop through and print every device — handle empty list
