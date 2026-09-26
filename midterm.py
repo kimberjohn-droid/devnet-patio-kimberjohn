@@ -1,13 +1,21 @@
 """
 Midterm Practical Exam — Network Device Inventory Tool
-Student: [your name]
+Student: Kimber John Patio
 """
 
 devices = []  # starts empty — the user adds devices as the program runs
 
 def display_menu():
-    # print the menu, return the user's choice
-    pass
+    """Displays the menu options and returns the user's choice."""
+    print("\n=== Network Device Inventory ===")
+    print("1. Add a device")
+    print("2. View all devices")
+    print("3. Count active vs inactive devices")
+    print("4. Find a device by name")
+    print("5. Remove a device by name (Bonus)")
+    print("6. Exit")
+    choice = input("Choose an option: ")
+    return choice
 
 def add_device(device_list):
     # ask for name, IP, status — build the string, add to the list
